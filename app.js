@@ -11,11 +11,11 @@
       {titulo:"Reunião de coordenação",inicio:new Date(Date.now()+86400000*3).toISOString(),fim:new Date(Date.now()+86400000*3+3600000).toISOString(),diaInteiro:false}
     ],
     jira: [
-      {responsavel:"SO Nilton",projeto:"Air Show",tarefa:"Confirmar autoridades",prazo:new Date(Date.now()+86400000).toISOString().slice(0,10),prioridade:"Alta",atrasada:false},
-      {responsavel:"Cap Ranyer",projeto:"Formatura",tarefa:"Revisar roteiro",prazo:new Date(Date.now()+86400000*2).toISOString().slice(0,10),prioridade:"Média",atrasada:false}
+      {responsavel:"SO Nilton",espaco:"Aniversário do 6º ETA",espacoChave:"AD6E",tarefa:"Confirmar autoridades",prazo:new Date(Date.now()+86400000).toISOString().slice(0,10),prioridade:"Alta",atrasada:false},
+      {responsavel:"Cap Ranyer",espaco:"Concerto Aniversário da OSFAB",espacoChave:"CADO",tarefa:"Revisar roteiro",prazo:new Date(Date.now()+86400000*2).toISOString().slice(0,10),prioridade:"Média",atrasada:false}
     ],
     prazos: [
-      {responsavel:"SO Nilton",projeto:"Air Show",tarefa:"Confirmar autoridades",prazo:new Date(Date.now()+86400000).toISOString().slice(0,10)}
+      {responsavel:"SO Nilton",espaco:"Aniversário do 6º ETA",espacoChave:"AD6E",tarefa:"Confirmar autoridades",prazo:new Date(Date.now()+86400000).toISOString().slice(0,10)}
     ],
     viaturas: [
       {inicio:"08:00",fim:"10:00",responsavel:"Cap Ranyer",setor:"SCM",missao:"Apoio ao GABAER",status:"APROVADO"}
@@ -72,7 +72,7 @@
       const cls=p.includes("alta")||p.includes("highest")||p.includes("high")?"priority-high":p.includes("média")||p.includes("medium")?"priority-medium":"priority-low";
       return `<tr class="${cls} ${x.atrasada?"overdue":""}">
        <td title="${esc(x.responsavel)}">${esc(x.responsavel||"Não atribuído")}</td>
-       <td title="${esc(x.projeto)}">${esc(x.projeto||"—")}</td>
+       <td title="${esc(x.espaco)}">${esc(x.espaco||"—")}</td>
        <td title="${esc(x.tarefa)}">${esc(x.tarefa)}</td>
        <td>${esc(shortDate(x.prazo))}</td></tr>`;
     }).join("") || `<tr><td colspan="4"><div class="empty">Nenhuma tarefa aberta.</div></td></tr>`;
@@ -90,7 +90,7 @@
     $("deadlineList").innerHTML=(items||[]).slice(0,10).map(x=>`<div class="list-item">
       <div class="when">${esc(shortDate(x.prazo))}</div>
       <div class="main"><div class="title">${esc(x.tarefa)}</div>
-      <div class="sub">${esc(x.responsavel||"Não atribuído")} ${x.projeto?"• "+esc(x.projeto):""}</div></div>
+      <div class="sub">${esc(x.responsavel||"Não atribuído")} ${x.espaco?"• "+esc(x.espaco):""}</div></div>
       <span class="badge">${esc(x.prioridade||"")}</span></div>`).join("") || `<div class="empty">Nenhum prazo cadastrado.</div>`;
   }
 
