@@ -3,75 +3,58 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f7fb">
   <title>Dashboard SCM — BABR</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="identity">
-      <img class="logo" src="assets/babr.png" alt="Logo da Base Aérea de Brasília">
-      <div>
-        <h1>SEÇÃO DE CERIMONIAL MILITAR</h1>
-        <p>BASE AÉREA DE BRASÍLIA</p>
-      </div>
+<header class="topbar">
+  <div class="identity">
+    <img class="logo" src="assets/babr-logo.svg" alt="Logo da BABR">
+    <div>
+      <h1>SEÇÃO DE CERIMONIAL MILITAR</h1>
+      <p>BASE AÉREA DE BRASÍLIA</p>
     </div>
-    <div class="date-time">
-      <strong id="clock">--:--:--</strong>
-      <span id="date">--</span>
+  </div>
+  <div class="date-time">
+    <strong id="clock">--:--:--</strong>
+    <span id="date">--</span>
+  </div>
+</header>
+
+<main class="dashboard">
+  <section class="panel calendar-panel">
+    <div class="panel-title"><h2>Calendário</h2><span id="calendarMonth"></span></div>
+    <div id="calendar" class="calendar"></div>
+  </section>
+
+  <section class="panel jira-panel">
+    <div class="panel-title"><h2>Tarefas do Jira</h2><span id="jiraCount"></span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Responsável</th><th>Espaço</th><th>Tarefa</th><th>Prazo</th></tr></thead>
+        <tbody id="jiraBody"></tbody>
+      </table>
     </div>
-  </header>
+  </section>
 
-  <main class="dashboard">
-    <section class="panel calendar-panel">
-      <div class="panel-title">
-        <h2>Calendário</h2>
-        <span id="calendarMonth"></span>
-      </div>
-      <div id="calendar" class="calendar" aria-label="Calendário mensal"></div>
-    </section>
+  <section class="panel vehicle-panel">
+    <div class="panel-title"><h2>Reservas de viatura</h2><span>Hoje</span></div>
+    <div id="vehicleList" class="stack-list"></div>
+  </section>
 
-    <section class="panel jira-panel">
-      <div class="panel-title">
-        <h2>Tarefas do Jira</h2>
-        <span id="jiraCount" class="count"></span>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Responsável</th><th>Espaço</th><th>Tarefa</th><th>Prazo</th></tr>
-          </thead>
-          <tbody id="jiraBody"></tbody>
-        </table>
-      </div>
-    </section>
+  <section class="panel deadlines-panel">
+    <div class="panel-title"><h2>Próximos prazos</h2><span>10 seguintes</span></div>
+    <div id="deadlineList" class="stack-list"></div>
+  </section>
 
-    <section class="panel vehicle-panel">
-      <div class="panel-title">
-        <h2>Reservas de viatura</h2>
-        <span>Hoje</span>
-      </div>
-      <div id="vehicleList" class="stack-list"></div>
-    </section>
+  <section class="panel messages-panel">
+    <div class="panel-title"><h2>Mensagens</h2></div>
+    <div id="messageList" class="messages"></div>
+  </section>
+</main>
 
-    <section class="panel deadlines-panel">
-      <div class="panel-title">
-        <h2>Próximos prazos</h2>
-        <span>10 seguintes</span>
-      </div>
-      <div id="deadlineList" class="stack-list"></div>
-    </section>
-
-    <section class="panel messages-panel">
-      <div class="panel-title">
-        <h2>Mensagens</h2>
-      </div>
-      <div id="messageList" class="messages"></div>
-    </section>
-  </main>
-
-  <div id="status" class="status" aria-live="polite">Carregando...</div>
-  <script src="config.js"></script>
-  <script src="app.js"></script>
+<div id="status" class="status">Carregando...</div>
+<script src="config.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
